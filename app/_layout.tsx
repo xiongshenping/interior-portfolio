@@ -1,29 +1,66 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import { PaperProvider, ActivityIndicator } from 'react-native-paper';
+import { View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { useStore } from '../store/useStore';
+import { initDatabase } from '../utils/database';
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const { user } = useStore();
+    const router = useRouter();
+    const segments = useSegments();
+    const [isReady, setIsReady] = useState(false);
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+    useEffect(() => {
+        const initialize = async () => {
+            await initDatabase();
+            setIsReady(true);
+        };
+        initialize();
+    }, []);
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    useEffect(() => {
+        if (!isReady) return;
+
+        const inAuthGroup = segments[0]?.startsWith('(auth)');
+
+        if (!user && !inAuthGroup) {
+            router.replace('/(auth)/login');
+        } else if (user && inAuthGroup) {
+            router.replace('/(tabs)');
+        }
+    }, [user, segments, isReady]);
+
+    if (!isReady) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" />
+            </View>
+        );
+    }
+
+    return (
+        <PaperProvider>
+            <Stack>
+                <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="categories/index"
+                    options={{
+                        headerShown: true,
+                        title: 'Categories',
+                        presentation: 'modal',
+                    }}
+                />
+                <Stack.Screen
+                    name="detail/index"
+                    options={{
+                        headerShown: true,
+                        title: 'Detail',
+                        presentation: 'modal',
+                    }}
+                />
+            </Stack>
+        </PaperProvider>
+    );
 }

@@ -1,75 +1,78 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { Card, Title } from 'react-native-paper';
+import { Link } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useEffect } from 'react';
+import { useStore } from '../../store/useStore';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+    const { designs, loading, fetchDesigns } = useStore();
+
+    useEffect(() => {
+        fetchDesigns();
+    }, []);
+
+    if (loading) {
+        return (
+            <SafeAreaView style={[styles.container, styles.centered]}>
+                <ActivityIndicator size="large" color="#6200EE" />
+                <Text style={styles.loadingText}>Loading designs...</Text>
+            </SafeAreaView>
+        );
+    }
+
+    const categories = [...new Set(designs.map(design => design.category))];
+    const featuredDesigns = designs.slice(0, 4);
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <Card style={styles.heroCard}>
+                <Card.Cover source={{ uri: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400' }} />
+                <Card.Title title="Portfolio" subtitle="Explore our interior design collection" />
+            </Card>
+
+            <Text style={styles.sectionTitle}>Categories</Text>
+            <FlatList
+                data={categories.map(category => ({ category, id: category }))}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item }) => (
+                    <Link href="/categories/index" asChild>
+                        <Card style={styles.categoryCard}>
+                            <Card.Cover source={{
+                                uri: designs.find(d => d.category === item.category)?.image || 'https://via.placeholder.com/150'
+                            }} />
+                            <Card.Title title={item.category} />
+                        </Card>
+                    </Link>
+                )}
+                keyExtractor={(item) => item.id}
+            />
+
+            <Text style={styles.sectionTitle}>Featured</Text>
+            <FlatList
+                data={featuredDesigns}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item }) => (
+                    <Link href={`/detail/${item.id}`} asChild>
+                        <Card style={styles.categoryCard}>
+                            <Card.Cover source={{ uri: item.image }} />
+                            <Card.Title title={item.title} subtitle={item.category} />
+                        </Card>
+                    </Link>
+                )}
+                keyExtractor={(item) => item.id.toString()}
+            />
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+    container: { flex: 1, padding: 16, backgroundColor: '#f5f5f5' },
+    centered: { justifyContent: 'center', alignItems: 'center' },
+    loadingText: { marginTop: 10, fontSize: 16, color: '#666' },
+    heroCard: { marginBottom: 16 },
+    sectionTitle: { fontSize: 18, fontWeight: 'bold', marginVertical: 8 },
+    categoryCard: { width: 150, marginRight: 16 },
 });
