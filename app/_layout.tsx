@@ -1,7 +1,7 @@
 import { Stack, useRouter, useSegments } from 'expo-router';
-import { PaperProvider, ActivityIndicator } from 'react-native-paper';
-import { View } from 'react-native';
 import { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { ActivityIndicator, PaperProvider } from 'react-native-paper';
 import { useStore } from '../store/useStore';
 import { initDatabase } from '../utils/database';
 
@@ -42,7 +42,9 @@ export default function RootLayout() {
     return (
         <PaperProvider>
             <Stack>
-                <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+                {/*<Stack.Screen name="(auth)" options={{ headerShown: false }} />*/}
+                <Stack.Screen name="(auth)/login" options={{ headerShown: false }} />
+                <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen
                     name="categories/index"
