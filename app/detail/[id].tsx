@@ -48,7 +48,7 @@ export default function DetailScreen() {
                 headerRight: () => (
                     <TouchableOpacity onPress={async () => {
                         const url = Linking.createURL(`/detail/${id}`);
-                        await Share.share({message: `Check out: ${url}`, url: url});
+                        await Share.share({message: `Check out: ${url}`});
                     }}>
                         <Ionicons name='share-outline' size={24} color={"#333"} />
                     </TouchableOpacity>
