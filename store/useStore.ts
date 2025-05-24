@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import {
     getAllDesigns,
-    getDesignsByCategory,
     getDesignById,
+    getDesignsByCategory,
     getUserByEmailAndPassword,
     registerUser,
 } from '../utils/database';
@@ -46,7 +46,7 @@ export const useStore = create<AppState>((set) => ({
     register: async (email: string, password: string) => {
         const success = await registerUser(email, password);
         if (success) {
-            set({ user: email });
+            // set({ user: email });
             return true;
         }
         return false;
