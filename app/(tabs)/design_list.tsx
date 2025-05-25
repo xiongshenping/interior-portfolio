@@ -1,4 +1,4 @@
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+/*import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as detailData from '../../detail_data.json';
 import * as listData from '../../list_data.json';
@@ -115,3 +115,4 @@ const styles = StyleSheet.create({
 });
 
 export default PortfolioList;
+*/

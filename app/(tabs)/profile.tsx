@@ -1,43 +1,36 @@
-import { useRouter } from 'expo-router';
-import React from 'react';
+import { Link, useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import {
-    Alert,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
+  Alert,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import {
-    Avatar,
-    Button,
-    Card,
-    Divider,
-    List,
-    Title,
+  Avatar,
+  Button,
+  Card,
+  Divider,
+  List,
+  Title,
 } from 'react-native-paper';
 import { useStore } from '../../store/useStore';
 
-const savedDesigns = [
-  {
-    id: '1',
-    title: 'Cozy Apartment',
-    subtitle: 'Living Room',
-    image:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150',
-  },
-  {
-    id: '2',
-    title: 'Minimalist Bedroom',
-    subtitle: 'Bedroom',
-    image:
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=150',
-  },
-];
-
 export default function ProfileScreen() {
-  const { user, logout } = useStore();
+  const {
+    user,
+    logout,
+    favorites,
+    fetchFavorites,
+  } = useStore();
   const router = useRouter();
+
+  // Load favorites when screen mounts
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
 
   const handleLogout = () => {
     Alert.alert('Logout', 'Are you sure you want to logout?', [
@@ -68,6 +61,7 @@ export default function ProfileScreen() {
         contentContainerStyle={styles.scrollContent}
         contentInsetAdjustmentBehavior="automatic"
       >
+        {/* User Profile Info */}
         <View style={styles.profileHeader}>
           <Avatar.Image
             size={80}
@@ -82,6 +76,7 @@ export default function ProfileScreen() {
           </View>
         </View>
 
+        {/* Settings / About / Contact */}
         <View style={styles.settingsCard}>
           <List.Section>
             <List.Subheader>INFORMATION</List.Subheader>
@@ -108,6 +103,7 @@ export default function ProfileScreen() {
           </List.Section>
         </View>
 
+        {/* Logout Button */}
         <Button
           mode="contained"
           onPress={handleLogout}
@@ -117,13 +113,23 @@ export default function ProfileScreen() {
           Logout
         </Button>
 
+        {/* Favorite Designs Section */}
         <Text style={styles.sectionTitle}>Saved Designs</Text>
-        {savedDesigns.map((item) => (
-          <Card style={styles.card} key={item.id}>
-            <Card.Cover source={{ uri: item.image }} />
-            <Card.Title title={item.title} subtitle={item.subtitle} />
-          </Card>
-        ))}
+
+        {favorites.length === 0 ? (
+          <Text style={{ color: '#666', fontSize: 14, marginBottom: 16 }}>
+            No saved designs yet.
+          </Text>
+        ) : (
+          favorites.map((item) => (
+            <Link key={item.id} href={`/detail/${item.id}`} asChild>
+              <Card style={styles.card}>
+                <Card.Cover source={{ uri: item.image }} />
+                <Card.Title title={item.title} subtitle={item.category} />
+              </Card>
+            </Link>
+          ))
+        )}
       </ScrollView>
     </>
   );
