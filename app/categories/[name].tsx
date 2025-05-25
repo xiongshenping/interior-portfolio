@@ -4,7 +4,8 @@ import {
   ActivityIndicator,
   FlatList,
   StyleSheet,
-  Text
+  Text,
+  View
 } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -38,7 +39,7 @@ export default function CategoryScreen() {
           headerBackTitle: 'Back',        // Show "Back" instead of "(tabs)"
         }}
       />
-      <SafeAreaView style={styles.container}>
+      <View style={[styles.container]}>
         <Text style={styles.title}>Category: {capitalize(String(name))}</Text>
         <FlatList
           data={designs}
@@ -56,7 +57,7 @@ export default function CategoryScreen() {
             </Link>
           )}
         />
-      </SafeAreaView>
+      </View>
     </>
   );
 }
