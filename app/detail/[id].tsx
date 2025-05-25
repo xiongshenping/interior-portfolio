@@ -10,7 +10,7 @@ import { useStore } from '../../store/useStore';
 
 export default function DetailScreen() {
     const { id } = useLocalSearchParams();
-    const { selectedDesign, loading, fetchDesignById } = useStore();
+    const { selectedDesign, loading, fetchDesignById, isDesignSaved, removeSavedDesign, addSavedDesign } = useStore();
 
     useEffect(() => {
         if (id) {
@@ -36,6 +36,10 @@ export default function DetailScreen() {
     }
 
     const headerHeight = useHeaderHeight();
+
+    const saved = isDesignSaved(Number(id));
+
+
 
     return (
         <>
@@ -63,8 +67,8 @@ export default function DetailScreen() {
                                 <Ionicons name='star' size={20} color={"#D4AF37"}></Ionicons>
                                 <Text style={styles.rating}>4.7</Text>
                             </View>
-                            <TouchableOpacity>
-                                <Ionicons name='heart-outline' size={22} color={"#333"} />
+                            <TouchableOpacity onPress={() => saved ? removeSavedDesign(Number(id)) : addSavedDesign(selectedDesign)}>
+                                <Ionicons name={saved ?'heart' : 'heart-outline'} size={22} color={"red"} />
                             </TouchableOpacity>
                         </View>
                         <Text style={styles.title}>{selectedDesign.title}</Text>
@@ -80,7 +84,10 @@ export default function DetailScreen() {
                 <View style={[styles.button, {backgroundColor: "#fff", justifyContent: "center", alignItems: "flex-start"}]}>
                     <Text style={styles.price}>Price: $120</Text>
                 </View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={[styles.button, saved && {opacity: 0.4}]} onPress={() => {
+                    addSavedDesign(selectedDesign);
+                    router.back();
+                }} disabled={saved}>
                     <Text style={styles.buttonText}>Add to Consideration</Text>
                 </TouchableOpacity>
             </View>
