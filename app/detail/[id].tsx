@@ -30,7 +30,8 @@ export default function DetailScreen() {
     loading,
     fetchDesignById,
     addToFavoritesById,
-    removeFromFavoritesById
+    removeFromFavoritesById,
+    fetchFavorites
   } = useStore();
 
   const isFavourite = (id: number) => {
@@ -39,7 +40,8 @@ export default function DetailScreen() {
 
   const [images, setImages] = useState<string[]>([]);
   const [texts, setTexts] = useState<string[]>([]);
-  const [favourite, setFavourite] = useState<boolean>(isFavourite(Number(id)))
+  const [favourite, setFavourite] = useState<boolean>(false);
+
 
   useEffect(() => {
     if (id) {
@@ -49,10 +51,14 @@ export default function DetailScreen() {
         const txts = await getDetailTextsByDesignId(Number(id));
         setImages(imgs.map((i) => i.url));
         setTexts(txts.map((t) => t.content));
+        
       };
       load();
+      fetchFavorites();
+      console.log("isfavourite: ", favorites);
+      setFavourite(isFavourite(Number(id)));
     }
-  }, [id]);
+  }, []);
 
   const headerHeight = useHeaderHeight();
 
