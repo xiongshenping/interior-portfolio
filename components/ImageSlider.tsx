@@ -16,7 +16,7 @@ export default function ImageSlider({images}: Props) {
 
     const onViewableItemsChanged = ({viewableItems}: {viewableItems: ViewToken[]}) =>{
         if(viewableItems[0].index !== undefined && viewableItems[0].index !== null){
-            setPaginationIndex(viewableItems[0].index % images.length)
+            setPaginationIndex(viewableItems[0].index)
         }
     }
 
