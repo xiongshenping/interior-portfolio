@@ -8,21 +8,33 @@ export const initDatabase = async () => {
 
         await db.execAsync(`
             CREATE TABLE IF NOT EXISTS designs (
-                                                   id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                   title TEXT NOT NULL,
-                                                   category TEXT NOT NULL,
-                                                   image TEXT NOT NULL,
-                                                   description TEXT
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                category TEXT NOT NULL,
+                image TEXT NOT NULL,
+                description TEXT
             );
         `);
 
         await db.execAsync(`
-      CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
-      );
-    `);
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                email TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL
+            );
+        `);
+
+        await db.execAsync(`
+            CREATE TABLE IF NOT EXISTS saved_designs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user TEXT NOT NULL,
+                design_id INTEGER NOT NULL,
+                title TEXT,
+                category TEXT,
+                image TEXT,
+                description TEXT
+            );
+        `);
 
         const result = await db.getFirstAsync<{ count: number }>(
             'SELECT COUNT(*) as count FROM designs'
@@ -89,6 +101,35 @@ export const registerUser = async (email: string, password: string) => {
         console.error('Error registering user:', error);
         return false;
     }
+};
+
+export const saveDesign = async (user: string, design: Design) => {
+    await db.runAsync(
+        `INSERT OR IGNORE INTO saved_designs (user, design_id, title, category, image, description)
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        user,
+        design.id,
+        design.title,
+        design.category,
+        design.image,
+        design.description
+    );
+};
+
+export const removeSavedDesign = async (user: string, designId: number) => {
+    await db.runAsync(
+        `DELETE FROM saved_designs WHERE user = ? AND design_id = ?`,
+        user,
+        designId
+    );
+};
+
+export const getSavedDesigns = async (user: string): Promise<Design[]> => {
+    const results = await db.getAllAsync<Design>(
+        `SELECT design_id as id, title, category, image, description FROM saved_designs WHERE user = ?`,
+        user
+    );
+    return results;
 };
 
 interface Design {
