@@ -35,7 +35,7 @@ export default function DetailScreen() {
   } = useStore();
 
   const isFavourite = (id: number) => {
-    return favorites.some(item => item.id === id);
+    return useStore.getState().favorites.some(item => item.id === id);
   };
 
   const [images, setImages] = useState<string[]>([]);
@@ -47,16 +47,15 @@ export default function DetailScreen() {
     if (id) {
       const load = async () => {
         await fetchDesignById(Number(id));
+        await fetchFavorites();
         const imgs = await getDetailImagesByDesignId(Number(id));
         const txts = await getDetailTextsByDesignId(Number(id));
+        setFavourite(isFavourite(Number(id)));
         setImages(imgs.map((i) => i.url));
         setTexts(txts.map((t) => t.content));
         
       };
       load();
-      fetchFavorites();
-      console.log("isfavourite: ", favorites);
-      setFavourite(isFavourite(Number(id)));
     }
   }, []);
 
