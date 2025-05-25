@@ -30,13 +30,16 @@ export default function HomeScreen() {
     );
   }
 
-  const categories = Array.from(new Set(designs.map((d) => d.category)));
-  const featuredDesigns = designs.slice(0, 4);
+  // Extract unique categories (handle comma-separated string)
+  const categories = Array.from(
+    new Set(
+      designs.flatMap((d) =>
+        d.category.split(',').map((c) => c.trim().toLowerCase())
+      )
+    )
+  );
 
-  // 在末尾追加前两个项目
-  const categoryItems = categories.concat(categories.slice(0, 2));
-  //const featuredItems = featuredDesigns.concat(featuredDesigns.slice(0, 2));
-  const featuredItems = featuredDesigns; 
+  const featuredItems = designs.slice(3, 7);
 
   return (
     <>
@@ -46,6 +49,7 @@ export default function HomeScreen() {
         contentContainerStyle={styles.scrollContent}
         contentInsetAdjustmentBehavior="automatic"
       >
+        {/* Hero Section */}
         <Card mode="elevated" elevation={4} style={styles.heroCard}>
           <Card.Cover
             source={{
@@ -62,6 +66,7 @@ export default function HomeScreen() {
           </Card.Content>
         </Card>
 
+        {/* Categories */}
         <Text style={styles.sectionTitle}>Categories</Text>
         <ScrollView
           horizontal
@@ -69,12 +74,17 @@ export default function HomeScreen() {
           style={styles.rowScroll}
           contentContainerStyle={styles.rowContent}
         >
-          {categoryItems.map((category, idx) => {
-            const cover =
-              designs.find((d) => d.category === category)?.image ||
-              'https://via.placeholder.com/150';
+          {categories.map((category, idx) => {
+            const cover = designs.find((d) =>
+              d.category.toLowerCase().includes(category)
+            )?.image || 'https://via.placeholder.com/150';
+
             return (
-              <Link key={`cat-${idx}`} href="/categories/index" asChild>
+              <Link
+                key={`cat-${idx}`}
+                href={`/categories/${encodeURIComponent(category)}`}
+                asChild
+              >
                 <Card mode="elevated" elevation={2} style={styles.gridCard}>
                   <Card.Cover source={{ uri: cover }} style={styles.cardCover} />
                   <Card.Content style={styles.cardContent}>
@@ -86,6 +96,7 @@ export default function HomeScreen() {
           })}
         </ScrollView>
 
+        {/* Featured */}
         <Text style={styles.sectionTitle}>Featured</Text>
         <ScrollView
           horizontal
@@ -102,7 +113,6 @@ export default function HomeScreen() {
                 />
                 <Card.Content style={styles.cardContent}>
                   <Title style={styles.cardTitle}>{item.title}</Title>
-                  <Text style={styles.cardSubtitle}>{item.category}</Text>
                 </Card.Content>
               </Card>
             </Link>
@@ -115,7 +125,7 @@ export default function HomeScreen() {
 
 const CARD_WIDTH = 150;
 const CARD_COVER_HEIGHT = 150;
-const CARD_TOTAL_HEIGHT = CARD_COVER_HEIGHT + 70; // extra for padding + text
+const CARD_TOTAL_HEIGHT = CARD_COVER_HEIGHT + 70;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f5f5f5' },
@@ -180,9 +190,5 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 16,
     marginBottom: 2,
-  },
-  cardSubtitle: {
-    fontSize: 14,
-    color: '#666',
   },
 });
