@@ -3,35 +3,43 @@ import { Ionicons } from '@expo/vector-icons';
 import { useHeaderHeight } from '@react-navigation/elements';
 import * as Linking from "expo-linking";
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-    ActivityIndicator,
-    Alert,
-    ScrollView,
-    Share,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  ScrollView,
+  Share,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStore } from '../../store/useStore';
 import {
-    getDetailImagesByDesignId,
-    getDetailTextsByDesignId,
+  getDetailImagesByDesignId,
+  getDetailTextsByDesignId,
 } from '../../utils/database';
+
+
 
 export default function DetailScreen() {
   const { id } = useLocalSearchParams();
   const {
+    favorites,
     selectedDesign,
     loading,
     fetchDesignById,
     addToFavoritesById,
+    removeFromFavoritesById
   } = useStore();
+
+  const isFavourite = (id: number) => {
+    return favorites.some(item => item.id === id);
+  };
 
   const [images, setImages] = useState<string[]>([]);
   const [texts, setTexts] = useState<string[]>([]);
+  const [favourite, setFavourite] = useState<boolean>(isFavourite(Number(id)))
 
   useEffect(() => {
     if (id) {
@@ -55,6 +63,16 @@ export default function DetailScreen() {
         <Text>Loading design details...</Text>
       </SafeAreaView>
     );
+  }
+
+  const handleRemoveFavourite = () => {
+    removeFromFavoritesById(Number(id));
+    setFavourite(false);
+  }
+
+  const handleAddFavourite = () => {
+    addToFavoritesById(Number(id));
+    setFavourite(true);
   }
 
   return (
@@ -88,8 +106,8 @@ export default function DetailScreen() {
               <Ionicons name="star" size={20} color="#D4AF37" />
               <Text style={styles.rating}>4.7</Text>
             </View>
-            <TouchableOpacity>
-              <Ionicons name="heart-outline" size={22} color="#333" />
+            <TouchableOpacity onPress={() => favourite ? handleRemoveFavourite() : handleAddFavourite()}>
+              <Ionicons name={favourite ? "heart" : "heart-outline"} size={22} color="red" />
             </TouchableOpacity>
           </View>
 
@@ -125,11 +143,12 @@ export default function DetailScreen() {
           <Text style={styles.price}>Price: $120</Text>
         </View>
         <TouchableOpacity
-          style={styles.button}
+          style={[styles.button, favourite && {opacity: 0.4}]}
           onPress={async () => {
             await addToFavoritesById(Number(id));
-            Alert.alert('Saved', 'This design has been added to your consideration list.');
+            router.back();
           }}
+          disabled={favourite}
         >
           <Text style={styles.buttonText}>Add to Consideration</Text>
         </TouchableOpacity>
