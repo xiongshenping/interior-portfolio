@@ -6,7 +6,7 @@ import { Design } from "@/constant/type";
 
 export const initDatabase = async () => {
   try {
-    db = SQLite.openDatabaseSync("interiorDesigner.db");
+    db = SQLite.openDatabaseSync("interiorDesigner(5).db");
 
     await db.execAsync(`
             CREATE TABLE IF NOT EXISTS designs (
@@ -126,7 +126,7 @@ export const removeSavedDesign = async (user: string, designId: number) => {
 
 export const getSavedDesigns = async (user: string): Promise<Design[]> => {
   const results = await db.getAllAsync<Design>(
-    `SELECT designs.id AS id, designs.title AS title, designs.catgeory AS category, designs.image AS image, designs.description AS description FROM designs JOIN saved_designs ON designs.id = saved_designs.design_id WHERE saved_designs.user = ?`,
+    `SELECT designs.id AS id, designs.title AS title, designs.category AS category, designs.image AS image, designs.description AS description FROM designs JOIN saved_designs ON designs.id = saved_designs.design_id WHERE saved_designs.user = ?`,
     user
   );
   return results;
