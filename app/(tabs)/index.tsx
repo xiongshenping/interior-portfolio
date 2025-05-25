@@ -1,12 +1,12 @@
 import { Link } from 'expo-router';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import {
-    ActivityIndicator,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
+  ActivityIndicator,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import { useStore } from '../../store/useStore';
@@ -35,7 +35,8 @@ export default function HomeScreen() {
 
   // 在末尾追加前两个项目
   const categoryItems = categories.concat(categories.slice(0, 2));
-  const featuredItems = featuredDesigns.concat(featuredDesigns.slice(0, 2));
+  //const featuredItems = featuredDesigns.concat(featuredDesigns.slice(0, 2));
+  const featuredItems = featuredDesigns; 
 
   return (
     <>

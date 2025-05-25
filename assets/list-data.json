@@ -1,0 +1,411 @@
+{
+  "portfolio": [
+    {
+      "title": "THE KARL LAGERFELD",
+      "description": "An Ultra-Luxurious Hospitality Experience Rooted in the Legendary Designer's Aesthetic",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/04/Indoor_Pool_DSC00331-960x960.jpg",
+      "link": "https://childesign.com/en/project/the-karl-lagerfeld/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Four Seasons Private Residences Whistler",
+      "description": "A Renovation Elevating Our Previous Design to New Heights",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/04/Chil-Four-Seasons-May-11th-Suite-62-Living-Room-2-V2-480x480.jpg",
+      "link": "https://childesign.com/en/project/four-seasons-private-residences-whistler-2/",
+      "sector": ["hospitality", "residential"]
+    },
+    {
+      "title": "Apex",
+      "description": "A bold landmark connecting North Vancouver's natural beauty with modern design",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/11/APEX_951_2000px-480x480.jpg",
+      "link": "https://childesign.com/en/project/apex/",
+      "sector": "residential"
+    },
+    {
+      "title": "Sentinel",
+      "description": "Redefining West Vancouver luxury with natural elegance, refined finishes, and breathtaking views",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/11/SENTINEL_1429_2000px-480x480.jpg",
+      "link": "https://childesign.com/en/project/sentinel/",
+      "sector": "residential"
+    },
+    {
+      "title": "Landmark on Robson Subpenthouse",
+      "description": "An elevated retreat in the sky",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2025/03/1-CHIL_Landmark-313-copy-960x960.jpg",
+      "link": "https://childesign.com/en/project/landmark-on-robson-subpenthouse/",
+      "sector": "residential"
+    },
+    {
+      "title": "Lucie",
+      "description": "a French fine-dining destination in downtown Toronto inspired by restaurateur's grandmother",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/04/CHIL_Lucie_Web-Res-01_-480x480.jpg",
+      "link": "https://childesign.com/en/project/lucie/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hollybridge at River Green",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/09/106-960x960.jpg",
+      "link": "https://childesign.com/en/project/hollybridge-at-river-green/",
+      "sector": "residential"
+    },
+    {
+      "title": "Delta Calgary Airport",
+      "description": "A serene sanctuary amidst the fast-paced world of travel",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/09/103-480x480.jpg",
+      "link": "https://childesign.com/en/project/delta-calgary-airport/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hilton Toronto",
+      "description": "deliberate interplay of colors creating an environment that transcends trends",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/02/CHIL_Hilton-Toronto_8962-480x480.jpg",
+      "link": "https://childesign.com/en/project/hilton-toronto/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Arbutus Club",
+      "description": "Tranquil refuge for an exclusive discovery",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/221112-CHIL-ARBUTUS_097_2000px-960x960.jpg",
+      "link": "https://childesign.com/en/project/arbutus-club/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "The Dorian, an Autograph Collection",
+      "description": "A richly layered environment that embodies a new and modern sense of Wild(e)",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/145_Web-960x960.jpg",
+      "link": "https://childesign.com/en/project/the-dorian/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Mesa by José Avillez",
+      "description": "Where Award-Winning Cuisine Meets Karl Lagerfeld's Timeless Elegance for an Unforgettable Dining Journey",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/04/Mesa_Restaurant_DSC09689-1-960x960.jpg",
+      "link": "https://childesign.com/en/project/mesa-by-jose-avillez/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Riviera Presentation Center",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/220925-CHIL-RIVIERA_066_2000px-480x480.jpg",
+      "link": "https://childesign.com/en/project/riviera-presentation-center/",
+      "sector": "residential"
+    },
+    {
+      "title": "Delta Markham",
+      "description": "seamlessly weaving together the diverse threads of Markham's identity",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2024/02/CHIL_Delta_Web-Res-16-480x480.jpg",
+      "link": "https://childesign.com/en/project/delta-markham/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Allison Homestore",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/09/230402-CHIL-MOSIAC-ALLISON_123_2000px-480x480.jpg",
+      "link": "https://childesign.com/en/project/allison-homestore/",
+      "sector": "residential"
+    },
+    {
+      "title": "Prologue",
+      "description": "Whimsical and playful design inspired by Oscar Wilde",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/119_Web-480x480.jpg",
+      "link": "https://childesign.com/en/project/prologue/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "REN",
+      "description": "An immersive residential experience through art and design",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/MorisMoreno_ZGF_051122_2776-480x480.jpg",
+      "link": "https://childesign.com/en/project/ren/",
+      "sector": "residential"
+    },
+    {
+      "title": "The Wilde",
+      "description": "'Modern Day Wilde' capturing the evolution in Calgary",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/109_Web-480x480.jpg",
+      "link": "https://childesign.com/en/project/the-wilde/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Spirit Ridge, The Unbound Collection by Hyatt",
+      "description": "Surrounded by desert, vineyards, and mountains, a destination to unwind",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2023/02/CHIL-Comp09-RVD-480x480.jpg",
+      "link": "https://childesign.com/en/project/spirit-ridge/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Moody Yards",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2022/09/CD_MOODY-YARDS_050-1_2000px-1-480x480.jpg",
+      "link": "https://childesign.com/en/project/moody-yards/",
+      "sector": "residential"
+    },
+    {
+      "title": "VUE",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/04/VUE_Singapore_19_034_Lowres-960x960.jpg",
+      "link": "https://childesign.com/en/project/vue/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Versante Hotel",
+      "description": "This new boutique hotel celebrates the various personalities that exist within the realm of social media",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2022/09/CHIL-Design_Versante_mezzanine_2-960x960.jpg",
+      "link": "https://childesign.com/en/project/versante-hotel/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "The Block",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2022/09/TheBlock_01-480x480.jpg",
+      "link": "https://childesign.com/en/project/the-block/",
+      "sector": "residential"
+    },
+    {
+      "title": "Aroma Resto Bar",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/09/DH_YXEDS_Restaurant_2-480x480.jpg",
+      "link": "https://childesign.com/en/project/aroma-resto-bar/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Fairmont Château Laurier",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/09/Chateau_Laurier_Hays01_crop_noTV-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-chateau-laurier/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Chloe Kerrisdale",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/09/CB-Chil-BH-Chloe-WEBRES-2021-07-19-021-480x480.jpg",
+      "link": "https://childesign.com/en/project/chloe-kerrisdale/",
+      "sector": "residential"
+    },
+    {
+      "title": "Telford on the Walk",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/06/LOBBY_004-480x480.jpg",
+      "link": "https://childesign.com/en/project/telford-on-the-walk/",
+      "sector": "residential"
+    },
+    {
+      "title": "King Blue Hotel",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2022/09/Chil-Design-King-Blue-1-480x480.jpg",
+      "link": "https://childesign.com/en/project/king-blue-hotel/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Stock and Supply",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/04/SS01B_crop-480x480.jpg",
+      "link": "https://childesign.com/en/project/stock-and-supply/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Parkside at Lynn",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/09/Mosaic-Parkside-at-Lynn_01-480x480.jpg",
+      "link": "https://childesign.com/en/project/parkside-at-lynn/",
+      "sector": "residential"
+    },
+    {
+      "title": "Crystal Lodge Whistler",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/04/CL_05V2-480x480.jpg",
+      "link": "https://childesign.com/en/project/crystal-lodge-whistler/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hotel Belmont",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/01/B2_V2-13-480x480.jpg",
+      "link": "https://childesign.com/en/project/hotel-belmont/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Fairmont Hotel Vancouver",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2018/03/Fairmont-Hotel-Van_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-hotel-vancouver/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Greenland Primus Resort & Apartments",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/11/MG_0248-02-480x480.jpg",
+      "link": "https://childesign.com/en/project/greenland-primus-resort-apartments-sanya-china/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Delta Calgary Downtown",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/03/CHIL_DELTA_0177-480x480.jpg",
+      "link": "https://childesign.com/en/project/delta-calgary-downtown/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Prova Bar and Kitchen",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/06/Provo-19-web-480x480.jpg",
+      "link": "https://childesign.com/en/project/prova-bar-and-kitchen/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Delta Hotels Saskatoon Downtown",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/09/57-Delta-Saskatoon-2021-480x480.jpg",
+      "link": "https://childesign.com/en/project/delta-hotels-saskatoon-downtown/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Etoile Residences",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2022/09/Chill_Etoile-_0207-1-480x480.jpg",
+      "link": "https://childesign.com/en/project/etoile-residences/",
+      "sector": "residential"
+    },
+    {
+      "title": "Marriott Vancouver Airport",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/01/Chil_Marriot_0154-480x480.jpg",
+      "link": "https://childesign.com/en/project/marriott-vancouver-airport/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Delta Vancouver Suites",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2018/03/Chil-Delta-JPG-1-480x480.jpg",
+      "link": "https://childesign.com/en/project/delta-vancouver-suites/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Maywood on the Park",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2021/06/ITC1274_McKayAve_S040_INT_Amenity_Final-2000-480x480.jpg",
+      "link": "https://childesign.com/en/project/maywood-on-the-park/",
+      "sector": "residential"
+    },
+    {
+      "title": "Fairmont Vancouver Airport",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/08/The-Fairmont-Vancouver-Airport-Fairmont-Gold-Room-1246762-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-vancouver-airport/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "The Denna Club at Seylynn Village",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Hero-BHChill_Seylynn_0172_LR-480x480.jpg",
+      "link": "https://childesign.com/en/project/the-denna-club-at-seylynn-village/",
+      "sector": "residential"
+    },
+    {
+      "title": "Shangri-La Toronto",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/02/Shangri-La-Toronto_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/shangri-la-toronto/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "The Humphreys Serviced Apartments",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/12/BH-ARCHITECTS_HUMPHREYS_WIDE-ANGLE-8-Modifier-Modifier_Web-Mid-Res-480x480.jpg",
+      "link": "https://childesign.com/en/project/the-humphreys-serviced-apartments/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Food & Beverage at UBC AMS Nest",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/01/DialogBH_SUB_4034-480x480.jpg",
+      "link": "https://childesign.com/en/project/food-beverage-at-ubc-ams-nest/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Sheraton Guildford Suites",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Traditional-Queen-Room-480x480.jpg",
+      "link": "https://childesign.com/en/project/sheraton-guildford-suites/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hyatt Regency Vancouver",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Hyatt9of10-480x480.jpg",
+      "link": "https://childesign.com/en/project/hyatt-regency-vancouver/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Lakecrest Townhomes",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/08/hillcrest_00007-480x480.jpg",
+      "link": "https://childesign.com/en/project/lakecrest-townhomes/",
+      "sector": "residential"
+    },
+    {
+      "title": "Fairmont Waterfront",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/01/Fairmont-Waterfront_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-waterfront/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Element Vancouver Metrotown",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/02/Metrotown-Element_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/element-vancouver-metrotown/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "DoubleTree by Hilton",
+      "description": "Regina and Wild Sage Kitchen & Bar",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/02/Double-Tree-Hilton-Regina_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/doubletree-hilton-regina-wild-sage-kitchen-bar/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "ARC Restaurant",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/01/Arc_04-480x480.jpg",
+      "link": "https://childesign.com/en/project/arc-restaurant/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hong Kong City Garden Hotel",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/11/套房卧室方案一0427a-480x480.jpg",
+      "link": "https://childesign.com/en/project/hong-kong-city-garden-hotel/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Fairmont Jasper Park Lodge",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Ridgeline-Cabin-Living-Room-1-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-jasper-park-lodge/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Stratus Bar & Restaurant",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2020/01/Stratus13-480x480.jpg",
+      "link": "https://childesign.com/en/project/stratus-bar-restaurant/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Novotel Toronto",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Guest-Room-02-480x480.jpg",
+      "link": "https://childesign.com/en/project/novotel-toronto/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Fairmont Pacific Rim",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/01/Fairmont-Pac-Rim_SecondaryHero-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-pacific-rim/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Hotel Arts",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/02/Hotel-Arts_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/hotel-arts/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Shangri-La Vancouver",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/01/Shangri-La-Vancouver_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/shangri-la-vancouver/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Myanmar Luxury River Cruise Ships",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/02/Ships-31-480x480.jpg",
+      "link": "https://childesign.com/en/project/myanmar-luxury-river-cruise-ships/",
+      "sector": "hospitality"
+    },
+    {
+      "title": "Four Seasons Private Residences Whistler",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/01/Four-Seasons-Private-Residences_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/four-seasons-private-residences-whistler/",
+      "sector": "residential"
+    },
+    {
+      "title": "Mosaic Victoria Townhomes",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2019/08/victoria_9831-copy-480x480.jpg",
+      "link": "https://childesign.com/en/project/mosaic-victoria-townhomes/",
+      "sector": "residential"
+    },
+    {
+      "title": "Fairmont Palliser",
+      "image": "https://childesign.com/wp-content/uploads/sites/2/2017/02/Fairmont-Palliser_Hero-480x480.jpg",
+      "link": "https://childesign.com/en/project/fairmont-palliser/",
+      "sector": "hospitality"
+    }
+  ],
+  "metadata": {
+    "total_projects": 58,
+    "sectors": ["hospitality", "residential"],
+    "source": "https://childesign.com/en/portfolio/"
+  }
+}
