@@ -1,22 +1,16 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 import {
-    removeSavedDesign as dbRemoveSavedDesign,
-    getAllDesigns,
-    getDesignById,
-    getDesignsByCategory,
-    getSavedDesigns,
-    getUserByEmailAndPassword,
-    registerUser,
-    saveDesign
-} from '../utils/database';
+  removeSavedDesign as dbRemoveSavedDesign,
+  getAllDesigns,
+  getDesignById,
+  getDesignsByCategory,
+  getSavedDesigns,
+  getUserByEmailAndPassword,
+  registerUser,
+  saveDesign,
+} from "../utils/database";
 
-interface Design {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-}
+import { Design } from "@/constant/type";
 
 interface AppState {
   user: string | null;
@@ -68,7 +62,7 @@ export const useStore = create<AppState>((set, get) => ({
       const designs = await getAllDesigns();
       set({ designs, loading: false });
     } catch (error) {
-      console.error('Error fetching designs:', error);
+      console.error("Error fetching designs:", error);
       set({ loading: false });
     }
   },
@@ -79,7 +73,7 @@ export const useStore = create<AppState>((set, get) => ({
       const designs = await getDesignsByCategory(category);
       set({ designs, loading: false });
     } catch (error) {
-      console.error('Error fetching designs by category:', error);
+      console.error("Error fetching designs by category:", error);
       set({ loading: false });
     }
   },
@@ -90,7 +84,7 @@ export const useStore = create<AppState>((set, get) => ({
       const design = await getDesignById(id);
       set({ selectedDesign: design, loading: false });
     } catch (error) {
-      console.error('Error fetching design by id:', error);
+      console.error("Error fetching design by id:", error);
       set({ loading: false });
     }
   },
@@ -100,7 +94,7 @@ export const useStore = create<AppState>((set, get) => ({
     if (!user) return;
     const exists = savedDesigns.some((d) => d.id === design.id);
     if (!exists) {
-      await saveDesign(user, design);
+      await saveDesign(user, design.id);
       set({ savedDesigns: [...savedDesigns, design] });
     }
   },
