@@ -1,42 +1,27 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import {
-    Alert,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
+  Alert,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import {
-    Avatar,
-    Button,
-    Card,
-    Divider,
-    List,
-    Title,
+  Avatar,
+  Button,
+  Card,
+  Divider,
+  List,
+  Title,
 } from 'react-native-paper';
 import { useStore } from '../../store/useStore';
 
-const savedDesigns = [
-  {
-    id: '1',
-    title: 'Cozy Apartment',
-    subtitle: 'Living Room',
-    image:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150',
-  },
-  {
-    id: '2',
-    title: 'Minimalist Bedroom',
-    subtitle: 'Bedroom',
-    image:
-      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=150',
-  },
-];
-
 export default function ProfileScreen() {
-  const { user, logout } = useStore();
+  const { user, logout, savedDesigns, removeSavedDesign, isDesignSaved } = useStore();
   const router = useRouter();
 
   const handleLogout = () => {
@@ -68,6 +53,7 @@ export default function ProfileScreen() {
         contentContainerStyle={styles.scrollContent}
         contentInsetAdjustmentBehavior="automatic"
       >
+        {/* 用户信息 */}
         <View style={styles.profileHeader}>
           <Avatar.Image
             size={80}
@@ -82,6 +68,7 @@ export default function ProfileScreen() {
           </View>
         </View>
 
+        {/* 设置列表 */}
         <View style={styles.settingsCard}>
           <List.Section>
             <List.Subheader>INFORMATION</List.Subheader>
@@ -108,6 +95,7 @@ export default function ProfileScreen() {
           </List.Section>
         </View>
 
+        {/* 登出按钮 */}
         <Button
           mode="contained"
           onPress={handleLogout}
@@ -117,13 +105,33 @@ export default function ProfileScreen() {
           Logout
         </Button>
 
+        {/* 收藏列表 */}
         <Text style={styles.sectionTitle}>Saved Designs</Text>
-        {savedDesigns.map((item) => (
-          <Card style={styles.card} key={item.id}>
-            <Card.Cover source={{ uri: item.image }} />
-            <Card.Title title={item.title} subtitle={item.subtitle} />
-          </Card>
-        ))}
+        {savedDesigns.length === 0 ? (
+          <Text style={{ color: '#888', fontStyle: 'italic' }}>
+            No saved designs.
+          </Text>
+        ) : (
+          savedDesigns.map((item) => (
+            <TouchableOpacity key={item.id} onPress={() => router.push(`/detail/${item.id}`)}>
+              <Card style={styles.card}>
+                <Card.Cover source={{ uri: item.image }} />
+                <Card.Title
+                  title={item.title}
+                  subtitle={item.category}
+                  right={() => (
+                    <TouchableOpacity
+                      onPress={() => removeSavedDesign(item.id)}
+                      style={{ marginRight: 16 }}
+                    >
+                      <Ionicons name="heart" size={24} color="red" />
+                    </TouchableOpacity>
+                  )}
+                />
+              </Card>
+            </TouchableOpacity>
+          ))
+        )}
       </ScrollView>
     </>
   );
