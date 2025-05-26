@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Card, Title } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import { useStore } from '../../store/useStore';
 
 export default function HomeScreen() {
@@ -30,7 +30,6 @@ export default function HomeScreen() {
     );
   }
 
-  // Extract unique categories (handle comma-separated string)
   const categories = Array.from(
     new Set(
       designs.flatMap((d) =>
@@ -59,7 +58,7 @@ export default function HomeScreen() {
             style={styles.heroCover}
           />
           <Card.Content style={styles.heroContent}>
-            <Title style={styles.heroTitle}>Portfolio</Title>
+            <Text style={styles.heroTitle}>Portfolio</Text>
             <Text style={styles.heroSubtitle}>
               Explore our interior design collection
             </Text>
@@ -86,10 +85,13 @@ export default function HomeScreen() {
                 asChild
               >
                 <Card mode="elevated" elevation={2} style={styles.gridCard}>
-                  <Card.Cover source={{ uri: cover }} style={styles.cardCover} />
-                  <Card.Content style={styles.cardContent}>
-                    <Title style={styles.cardTitle}>{category}</Title>
-                  </Card.Content>
+                  {/*Wrapped image + overlay title inside View */}
+                  <View style={styles.imageWrapper}>
+                    <Card.Cover source={{ uri: cover }} style={styles.cardCover} />
+                    <View style={styles.overlay}>
+                      <Text style={styles.overlayText}>{category}</Text>
+                    </View>
+                  </View>
                 </Card>
               </Link>
             );
@@ -107,13 +109,13 @@ export default function HomeScreen() {
           {featuredItems.map((item, idx) => (
             <Link key={`feat-${idx}`} href={`/detail/${item.id}`} asChild>
               <Card mode="elevated" elevation={2} style={styles.gridCard}>
-                <Card.Cover
-                  source={{ uri: item.image }}
-                  style={styles.cardCover}
-                />
-                <Card.Content style={styles.cardContent}>
-                  <Title style={styles.cardTitle}>{item.title}</Title>
-                </Card.Content>
+                {/*Same image overlay pattern for featured */}
+                <View style={styles.imageWrapper}>
+                  <Card.Cover source={{ uri: item.image }} style={styles.cardCover} />
+                  <View style={styles.overlay}>
+                    <Text style={styles.overlayText}>{item.title}</Text>
+                  </View>
+                </View>
               </Card>
             </Link>
           ))}
@@ -125,7 +127,7 @@ export default function HomeScreen() {
 
 const CARD_WIDTH = 150;
 const CARD_COVER_HEIGHT = 150;
-const CARD_TOTAL_HEIGHT = CARD_COVER_HEIGHT + 70;
+const CARD_TOTAL_HEIGHT = CARD_COVER_HEIGHT;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f5f5f5' },
@@ -153,7 +155,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 12,
   },
-  heroTitle: { fontSize: 20, marginBottom: 4 },
+  heroTitle: { fontSize: 20, fontWeight: 'bold', marginBottom: 4 },
   heroSubtitle: { fontSize: 14, color: '#666' },
 
   sectionTitle: {
@@ -178,17 +180,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#ffffff',
   },
-  cardCover: {
+
+  // ⬇️ NEW: for image + overlay title inside card
+  imageWrapper: {
+    position: 'relative',
+    width: '100%',
     height: CARD_COVER_HEIGHT,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
   },
-  cardContent: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+  cardCover: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
   },
-  cardTitle: {
-    fontSize: 16,
-    marginBottom: 2,
+  overlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    paddingVertical: 4,
+    paddingHorizontal: 6,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  overlayText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
